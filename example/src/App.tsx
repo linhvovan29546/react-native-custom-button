@@ -1,18 +1,21 @@
+// @ts-ignore
 import * as React from 'react';
-
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-custom-button';
+import { TouchableThrottle, TouchableSkeuomorphism } from '../../src/index'
+
 
 export default function App() {
-  const [result, setResult] = React.useState<number | undefined>();
-
-  React.useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
   return (
     <View style={styles.container}>
-      <Text>Result: {result}</Text>
+      <TouchableThrottle onPress={() => {
+        console.log('on TouchableThrottle')
+      }}>
+        <Text>TouchableThrottle</Text>
+      </TouchableThrottle>
+      <TouchableSkeuomorphism size={12}
+      >
+        <Text>TouchableSkeuomorphism</Text>
+      </TouchableSkeuomorphism>
     </View>
   );
 }
